@@ -5,7 +5,7 @@ export default function GameScreen() {
     <View style={styles.screen}>
       <Text style={styles.label}>COMING SOON</Text>
       <Text style={styles.title}>EKO Rider{`\n`}Challenge</Text>
-      <Text style={styles.intro}>Hier bouwen we later een reactiegames met score, timer en herstartknop.</Text>
+      <Text style={styles.intro}>Hier bouwen ik later een reactiegames met score, timer en herstartknop.</Text>
       <Pressable style={styles.button} onPress={() => {}}><Text style={styles.buttonText}>Start game</Text></Pressable>
     </View>
   );
