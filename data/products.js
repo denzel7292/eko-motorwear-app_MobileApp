@@ -1,15 +1,15 @@
 // Tijdelijke gegevens. Deze lijst wordt later vervangen door data uit de Webflow API.
 export const products = [
-  { id: 'flexodus-jacket', name: 'Flexodus Jacket', category: 'Motorjassen', price: 249.95, description: 'Lichte all-season motorjas met protectiezones.' },
-  { id: 'velocity-jacket', name: 'Velocity Jacket', category: 'Motorjassen', price: 289.95, description: 'Sportieve jas voor dagelijkse ritten.' },
-  { id: 'rider-pants', name: 'Rider Pants', category: 'Motorbroeken', price: 179.95, description: 'Comfortabele motorbroek met stretchpanelen.' },
-  { id: 'touring-pants', name: 'Touring Pants', category: 'Motorbroeken', price: 219.95, description: 'Waterafstotende broek voor lange afstanden.' },
-  { id: 'grip-gloves', name: 'Grip Gloves', category: 'Handschoenen', price: 69.95, description: 'Korte handschoenen met extra grip op het stuur.' },
-  { id: 'storm-gloves', name: 'Storm Gloves', category: 'Handschoenen', price: 89.95, description: 'Warme handschoenen voor koudere dagen.' },
-  { id: 'road-boots', name: 'Road Boots', category: 'Motorlaarzen', price: 149.95, description: 'Stevige motorlaarzen met enkelbescherming.' },
-  { id: 'urban-boots', name: 'Urban Boots', category: 'Motorlaarzen', price: 129.95, description: 'Casual laarzen die ook naast de motor passen.' },
-  { id: 'road-helmet', name: 'Road Helmet', category: 'Motorhelmen', price: 199.95, description: 'Stille integraalhelm voor comfortabele ritten.' },
-  { id: 'air-helmet', name: 'Air Helmet', category: 'Motorhelmen', price: 229.95, description: 'Lichte helm met ventilatie en breed zicht.' },
+  { id: 'flexodus-jacket', name: 'Flexodus Jacket', category: 'Motorjassen', price: 249.95, description: 'Lichte all-season motorjas met protectiezones.', image: require('../assets/products/FlexodusJacket.webp'), material: 'Slijtvast textiel met waterafstotende coating', sizes: 'S – 3XL', protection: 'CE-schouder- en elleboogprotectie' },
+  { id: 'velocity-jacket', name: 'Velocity Jacket', category: 'Motorjassen', price: 289.95, description: 'Sportieve jas voor dagelijkse ritten.', image: require('../assets/products/VelocityJacket.jpg'), material: 'Mesh en 600D polyester', sizes: 'S – 4XL', protection: 'CE-protectie en reflecterende details' },
+  { id: 'rider-pants', name: 'Rider Pants', category: 'Motorbroeken', price: 179.95, description: 'Comfortabele motorbroek met stretchpanelen.', image: require('../assets/products/RiderPants.webp'), material: 'Stretch textiel met versterkte kniezones', sizes: 'S – 3XL', protection: 'Voorbereid voor knie- en heupprotectie' },
+  { id: 'touring-pants', name: 'Touring Pants', category: 'Motorbroeken', price: 219.95, description: 'Waterafstotende broek voor lange afstanden.', image: require('../assets/products/TouringPants.webp'), material: 'Gelamineerd touringtextiel', sizes: 'S – 4XL', protection: 'CE-knieprotectie inbegrepen' },
+  { id: 'grip-gloves', name: 'Grip Gloves', category: 'Handschoenen', price: 69.95, description: 'Korte handschoenen met extra grip op het stuur.', image: require('../assets/products/GripGloves.jpg'), material: 'Geitenleder en textielmix', sizes: 'S – XXL', protection: 'Knokkelprotector en versterkte handpalm' },
+  { id: 'storm-gloves', name: 'Storm Gloves', category: 'Handschoenen', price: 89.95, description: 'Warme handschoenen voor koudere dagen.', image: require('../assets/products/StormGloves.webp'), material: 'Leer met waterdicht membraan', sizes: 'S – XXL', protection: 'Carbon knokkelprotector' },
+  { id: 'road-boots', name: 'Road Boots', category: 'Motorlaarzen', price: 149.95, description: 'Stevige motorlaarzen met enkelbescherming.', image: require('../assets/products/RoadBoots.jpg'), material: 'Microvezel en verstevigd leer', sizes: '39 – 47', protection: 'Enkel-, hiel- en scheenbescherming' },
+  { id: 'urban-boots', name: 'Urban Boots', category: 'Motorlaarzen', price: 129.95, description: 'Casual laarzen die ook naast de motor passen.', image: require('../assets/products/UrbanBoots.jpg'), material: 'Nubucklook microvezel', sizes: '39 – 47', protection: 'Versterkte enkel en hiel' },
+  { id: 'road-helmet', name: 'Road Helmet', category: 'Motorhelmen', price: 199.95, description: 'Stille integraalhelm voor comfortabele ritten.', image: require('../assets/products/RoadHelmet.jpg'), material: 'Polycarbonaat schaal met EPS-binnenwerk', sizes: 'XS – XXL', protection: 'ECE 22.06-gecertificeerd' },
+  { id: 'air-helmet', name: 'Air Helmet', category: 'Motorhelmen', price: 229.95, description: 'Lichte helm met ventilatie en breed zicht.', image: require('../assets/products/AirHelmet.jpg'), material: 'Carbonlook composietschaal', sizes: 'XS – XXL', protection: 'ECE 22.06-gecertificeerd' },
 ];
 
 export const productCategories = ['Alle', 'Motorjassen', 'Motorbroeken', 'Handschoenen', 'Motorlaarzen', 'Motorhelmen'];

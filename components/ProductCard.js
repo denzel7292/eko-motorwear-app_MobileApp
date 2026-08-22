@@ -1,9 +1,10 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import { colors, radius } from '../constants/theme';
 
 export default function ProductCard({ product, onPress }) {
   return (
     <Pressable style={({ pressed }) => [styles.card, pressed && styles.pressed]} onPress={onPress}>
-      <View style={styles.imagePlaceholder}><Text style={styles.imageText}>PRODUCTFOTO</Text></View>
+      <View style={styles.imagePlaceholder}><Image source={product.image} style={styles.image} resizeMode="contain" /></View>
       <View style={styles.content}>
         <Text style={styles.category}>{product.category}</Text>
         <Text style={styles.name}>{product.name}</Text>
@@ -15,13 +16,13 @@ export default function ProductCard({ product, onPress }) {
 }
 
 const styles = StyleSheet.create({
-  card: { backgroundColor: '#ffffff', borderRadius: 12, marginBottom: 16, overflow: 'hidden' },
-  pressed: { opacity: 0.7 },
-  imagePlaceholder: { alignItems: 'center', backgroundColor: '#c7d0d2', height: 144, justifyContent: 'center' },
-  imageText: { color: '#607377', fontSize: 11, fontWeight: '700', letterSpacing: 1.4 },
+  card: { backgroundColor: colors.surface, borderColor: colors.line, borderRadius: radius.medium, borderWidth: 1, marginBottom: 14, overflow: 'hidden' },
+  pressed: { opacity: 0.72, transform: [{ scale: 0.99 }] },
+  imagePlaceholder: { alignItems: 'center', backgroundColor: '#F4F4F1', height: 152, justifyContent: 'center', overflow: 'hidden' },
+  image: { height: '94%', width: '94%' },
   content: { padding: 16 },
-  category: { color: '#607377', fontSize: 11, fontWeight: '700', letterSpacing: 1.1, marginBottom: 5 },
-  name: { color: '#1c2528', fontSize: 20, fontWeight: '700' },
-  description: { color: '#596568', fontSize: 14, lineHeight: 20, marginTop: 7 },
-  price: { color: '#1c2528', fontSize: 16, fontWeight: '800', marginTop: 13 },
+  category: { color: colors.textFaint, fontSize: 10, fontWeight: '800', letterSpacing: 1.4, marginBottom: 7, textTransform: 'uppercase' },
+  name: { color: colors.text, fontSize: 20, fontWeight: '800', letterSpacing: -0.4 },
+  description: { color: colors.textMuted, fontSize: 14, lineHeight: 20, marginTop: 8 },
+  price: { color: colors.text, fontSize: 16, fontWeight: '800', marginTop: 14 },
 });

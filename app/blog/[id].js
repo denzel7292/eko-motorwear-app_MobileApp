@@ -1,11 +1,24 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { useEffect, useRef } from 'react';
+import { Animated, Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 import { blogs } from '../../data/blogs';
+import { colors, radius } from '../../constants/theme';
 
 export default function BlogDetailsScreen() {
   const { id } = useLocalSearchParams();
   const blog = blogs.find((item) => item.id === id);
-  return <View style={styles.screen}><Text style={styles.label}>{blog?.category || 'BLOGDETAIL'}</Text><Text style={styles.title}>{blog?.title || String(id).replaceAll('-', ' ')}</Text><Text style={styles.text}>{blog?.intro || 'Dit artikel bestaat niet.'}</Text><Text style={styles.date}>{blog?.date || ''}</Text></View>;
+  const fade = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => { Animated.timing(fade, { toValue: 1, duration: 420, useNativeDriver: true }).start(); }, [fade]);
+
+  return <ScrollView contentContainerStyle={styles.screen}>
+    <Animated.View style={[styles.image, { opacity: fade }]}>{blog?.image ? <Image source={blog.image} style={styles.blogImage} resizeMode="cover" /> : <Text style={styles.imageText}>EKO / JOURNAL</Text>}</Animated.View>
+    <Text style={styles.label}>{blog?.category || 'BLOGDETAIL'} · {blog?.date || ''}</Text>
+    <Text style={styles.title}>{blog?.title || String(id).replaceAll('-', ' ')}</Text>
+    <Text style={styles.text}>{blog?.intro || 'Dit artikel bestaat niet.'}</Text>
+    <View style={styles.rule} />
+    <Text style={styles.body}>Deze tijdelijke detailweergave krijgt later de rijke inhoud uit Webflow CMS. De rustige typografie en brede beeldruimte volgen al de nieuwe EKO-stijl.</Text>
+  </ScrollView>;
 }
 
-const styles = StyleSheet.create({ screen: { backgroundColor: '#f1f3f3', flex: 1, padding: 24 }, label: { color: '#607377', fontSize: 12, fontWeight: '700', letterSpacing: 1.5, marginTop: 10 }, title: { color: '#1c2528', fontSize: 30, fontWeight: '800', marginTop: 14, textTransform: 'capitalize' }, text: { color: '#596568', fontSize: 16, lineHeight: 24, marginTop: 16 }, date: { color: '#607377', fontSize: 14, fontWeight: '700', marginTop: 22 } });
+const styles = StyleSheet.create({ screen: { backgroundColor: colors.background, flexGrow: 1, padding: 20 }, image: { backgroundColor: colors.surfaceRaised, borderRadius: radius.large, height: 235, overflow: 'hidden' }, blogImage: { height: '100%', width: '100%' }, imageText: { color: colors.textMuted, fontSize: 11, fontWeight: '800', letterSpacing: 2, position: 'absolute' }, label: { color: colors.textFaint, fontSize: 11, fontWeight: '800', letterSpacing: 1.3, marginTop: 24, textTransform: 'uppercase' }, title: { color: colors.text, fontSize: 34, fontWeight: '900', letterSpacing: -1.4, lineHeight: 38, marginTop: 10 }, text: { color: colors.textMuted, fontSize: 17, lineHeight: 25, marginTop: 16 }, rule: { backgroundColor: colors.line, height: 1, marginVertical: 26 }, body: { color: colors.textMuted, fontSize: 16, lineHeight: 26, paddingBottom: 30 } });

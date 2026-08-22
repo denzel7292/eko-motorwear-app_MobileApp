@@ -5,6 +5,7 @@ import FilterControls from '../../components/FilterControls';
 import BlogCard from '../../components/BlogCard';
 import { blogCategories, blogs } from '../../data/blogs';
 import { filterByNameAndCategory, sortBlogs } from '../../utils/catalog';
+import { colors } from '../../constants/theme';
 
 const sortOptions = [
   { label: 'Nieuwste eerst', value: 'newest' },
@@ -32,8 +33,9 @@ export default function BlogsScreen() {
 
   return (
     <ScrollView contentContainerStyle={styles.screen}>
-      <Text style={styles.title}>Blogs</Text>
-      <Text style={styles.intro}>Een tijdelijke blogweergave. Later koppel ik hier de Webflow CMS-data.</Text>
+      <Text style={styles.kicker}>JOURNAL / EKO</Text>
+      <Text style={styles.title}>Rijdersverhalen</Text>
+      <Text style={styles.intro}>Praktische inzichten, routes en uitrustingstips voor onderweg.</Text>
       <FilterControls
         searchTerm={searchTerm}
         onSearchChange={setSearchTerm}
@@ -53,4 +55,4 @@ export default function BlogsScreen() {
   );
 }
 
-const styles = StyleSheet.create({ screen: { backgroundColor: '#f1f3f3', flexGrow: 1, padding: 20 }, title: { color: '#1c2528', fontSize: 30, fontWeight: '800', marginTop: 10 }, intro: { color: '#596568', fontSize: 15, lineHeight: 22, marginVertical: 12 }, resultCount: { color: '#607377', fontSize: 13, fontWeight: '700', marginBottom: 12 }, emptyState: { color: '#596568', fontSize: 15, lineHeight: 22, marginTop: 20, textAlign: 'center' } });
+const styles = StyleSheet.create({ screen: { backgroundColor: colors.background, flexGrow: 1, padding: 20 }, kicker: { color: colors.textFaint, fontSize: 11, fontWeight: '800', letterSpacing: 1.6, marginTop: 12 }, title: { color: colors.text, fontSize: 36, fontWeight: '900', letterSpacing: -1.4, marginTop: 8 }, intro: { color: colors.textMuted, fontSize: 15, lineHeight: 22, marginVertical: 12 }, resultCount: { color: colors.textFaint, fontSize: 12, fontWeight: '800', letterSpacing: 0.5, marginBottom: 12, textTransform: 'uppercase' }, emptyState: { color: colors.textMuted, fontSize: 15, lineHeight: 22, marginTop: 20, textAlign: 'center' } });

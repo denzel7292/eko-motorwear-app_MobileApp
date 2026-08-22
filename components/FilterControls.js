@@ -1,4 +1,5 @@
 import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { colors, radius } from '../constants/theme';
 
 export default function FilterControls({
   searchTerm,
@@ -18,7 +19,7 @@ export default function FilterControls({
         value={searchTerm}
         onChangeText={onSearchChange}
         placeholder={placeholder}
-        placeholderTextColor="#718084"
+        placeholderTextColor={colors.textFaint}
         style={styles.searchInput}
       />
 
@@ -56,19 +57,19 @@ export default function FilterControls({
 }
 
 const styles = StyleSheet.create({
-  wrapper: { marginBottom: 18 },
-  searchInput: { backgroundColor: '#ffffff', borderColor: '#c7d0d2', borderRadius: 9, borderWidth: 1, color: '#1c2528', fontSize: 15, paddingHorizontal: 14, paddingVertical: 13 },
-  label: { color: '#465458', fontSize: 13, fontWeight: '700', marginBottom: 7, marginTop: 16 },
+  wrapper: { marginBottom: 20 },
+  searchInput: { backgroundColor: colors.surface, borderColor: colors.line, borderRadius: radius.small, borderWidth: 1, color: colors.text, fontSize: 15, paddingHorizontal: 14, paddingVertical: 13 },
+  label: { color: colors.textMuted, fontSize: 11, fontWeight: '800', letterSpacing: 1.2, marginBottom: 8, marginTop: 18, textTransform: 'uppercase' },
   choiceRow: { gap: 8, paddingRight: 20 },
-  choice: { backgroundColor: '#e0e5e6', borderRadius: 20, paddingHorizontal: 13, paddingVertical: 9 },
-  choiceSelected: { backgroundColor: '#415e66' },
-  choiceText: { color: '#465458', fontSize: 13, fontWeight: '700' },
-  choiceTextSelected: { color: '#ffffff' },
+  choice: { backgroundColor: colors.surface, borderColor: colors.line, borderRadius: radius.pill, borderWidth: 1, paddingHorizontal: 14, paddingVertical: 9 },
+  choiceSelected: { backgroundColor: colors.text, borderColor: colors.text },
+  choiceText: { color: colors.textMuted, fontSize: 13, fontWeight: '700' },
+  choiceTextSelected: { color: colors.accentText },
   sortRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
-  sortButton: { backgroundColor: '#ffffff', borderColor: '#c7d0d2', borderRadius: 8, borderWidth: 1, paddingHorizontal: 11, paddingVertical: 9 },
-  sortButtonSelected: { backgroundColor: '#d7ddde', borderColor: '#415e66' },
-  sortText: { color: '#465458', fontSize: 12, fontWeight: '700' },
-  sortTextSelected: { color: '#1c2528' },
+  sortButton: { backgroundColor: colors.surface, borderColor: colors.line, borderRadius: radius.small, borderWidth: 1, paddingHorizontal: 11, paddingVertical: 9 },
+  sortButtonSelected: { backgroundColor: colors.surfaceSoft, borderColor: colors.textMuted },
+  sortText: { color: colors.textMuted, fontSize: 12, fontWeight: '700' },
+  sortTextSelected: { color: colors.text },
   resetButton: { alignSelf: 'flex-start', marginTop: 14 },
-  resetText: { color: '#415e66', fontSize: 13, fontWeight: '800', textDecorationLine: 'underline' },
+  resetText: { color: colors.text, fontSize: 13, fontWeight: '800', textDecorationLine: 'underline' },
 });
