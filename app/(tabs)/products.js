@@ -3,7 +3,7 @@ import { ScrollView, StyleSheet, Text } from 'react-native';
 import { useRouter } from 'expo-router';
 import FilterControls from '../../components/FilterControls';
 import ProductCard from '../../components/ProductCard';
-import { productCategories, products } from '../../data/products';
+import { useCatalog } from '../../context/CatalogContext';
 import { filterByNameAndCategory, sortProducts } from '../../utils/catalog';
 import { colors } from '../../constants/theme';
 
@@ -15,6 +15,7 @@ const sortOptions = [
 ];
 
 export default function ProductsScreen() {
+  const { productCategories, products } = useCatalog();
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('Alle');

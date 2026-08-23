@@ -3,7 +3,7 @@ import { ScrollView, StyleSheet, Text } from 'react-native';
 import { useRouter } from 'expo-router';
 import FilterControls from '../../components/FilterControls';
 import BlogCard from '../../components/BlogCard';
-import { blogCategories, blogs } from '../../data/blogs';
+import { useCatalog } from '../../context/CatalogContext';
 import { filterByNameAndCategory, sortBlogs } from '../../utils/catalog';
 import { colors } from '../../constants/theme';
 
@@ -15,6 +15,7 @@ const sortOptions = [
 ];
 
 export default function BlogsScreen() {
+  const { blogCategories, blogs } = useCatalog();
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('Alle');

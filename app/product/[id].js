@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { Animated, Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
-import { products } from '../../data/products';
+import { useCatalog } from '../../context/CatalogContext';
 import { colors, radius } from '../../constants/theme';
 import { useCart } from '../../context/CartContext';
 
 export default function ProductDetailsScreen() {
   const { id } = useLocalSearchParams();
+  const { products } = useCatalog();
   const product = products.find((item) => item.id === id);
   const { addToCart } = useCart();
   const [added, setAdded] = useState(false);
@@ -34,7 +35,7 @@ export default function ProductDetailsScreen() {
     <Text style={styles.text}>{product?.description || 'Dit product bestaat niet.'}</Text>
     <View style={styles.specs}><View style={styles.spec}><Text style={styles.specLabel}>MATERIAAL</Text><Text style={styles.specValue}>{product?.material}</Text></View><View style={styles.spec}><Text style={styles.specLabel}>MATEN</Text><Text style={styles.specValue}>{product?.sizes}</Text></View><View style={styles.spec}><Text style={styles.specLabel}>BESCHERMING</Text><Text style={styles.specValue}>{product?.protection}</Text></View></View>
     <View style={styles.buyRow}><Text style={styles.price}>{product ? `€ ${product.price.toFixed(2).replace('.', ',')}` : ''}</Text><Pressable style={({ pressed }) => [styles.button, pressed && styles.buttonPressed]} onPress={handleAdd}><Text style={styles.buttonText}>{added ? 'Toegevoegd ✓' : 'In mandje'}</Text></Pressable></View>
-    <Text style={styles.note}>Lokale demo-data · later gekoppeld aan Webflow E-commerce.</Text>
+    <Text style={styles.note}>Productinformatie wordt gesynchroniseerd met Webflow E-commerce wanneer de API is ingesteld.</Text>
   </ScrollView>;
 }
 

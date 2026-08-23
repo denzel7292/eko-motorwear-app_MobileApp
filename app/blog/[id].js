@@ -1,11 +1,12 @@
 import { useEffect, useRef } from 'react';
 import { Animated, Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
-import { blogs } from '../../data/blogs';
+import { useCatalog } from '../../context/CatalogContext';
 import { colors, radius } from '../../constants/theme';
 
 export default function BlogDetailsScreen() {
   const { id } = useLocalSearchParams();
+  const { blogs } = useCatalog();
   const blog = blogs.find((item) => item.id === id);
   const fade = useRef(new Animated.Value(0)).current;
 
@@ -17,7 +18,7 @@ export default function BlogDetailsScreen() {
     <Text style={styles.title}>{blog?.title || String(id).replaceAll('-', ' ')}</Text>
     <Text style={styles.text}>{blog?.intro || 'Dit artikel bestaat niet.'}</Text>
     <View style={styles.rule} />
-    <Text style={styles.body}>Deze tijdelijke detailweergave krijgt later de rijke inhoud uit Webflow CMS. De rustige typografie en brede beeldruimte volgen al de nieuwe EKO-stijl.</Text>
+    <Text style={styles.body}>{blog?.body || 'Deze tijdelijke detailweergave krijgt de rijke inhoud uit Webflow CMS zodra de API is ingesteld.'}</Text>
   </ScrollView>;
 }
 
