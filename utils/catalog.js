@@ -2,7 +2,7 @@ export function filterByNameAndCategory(items, searchTerm, selectedCategory, nam
   const normalizedSearch = searchTerm.trim().toLowerCase();
 
   return items.filter((item) => {
-    const matchesName = item[nameKey].toLowerCase().includes(normalizedSearch);
+    const matchesName = String(item[nameKey] || '').toLowerCase().includes(normalizedSearch);
     const matchesCategory = selectedCategory === 'Alle' || item.category === selectedCategory;
     return matchesName && matchesCategory;
   });

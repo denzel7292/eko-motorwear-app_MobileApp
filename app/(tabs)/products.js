@@ -24,7 +24,7 @@ export default function ProductsScreen() {
   const visibleProducts = useMemo(() => {
     const filteredProducts = filterByNameAndCategory(products, searchTerm, selectedCategory, 'name');
     return sortProducts(filteredProducts, selectedSort);
-  }, [searchTerm, selectedCategory, selectedSort]);
+  }, [products, searchTerm, selectedCategory, selectedSort]);
 
   function resetFilters() {
     setSearchTerm('');
@@ -50,7 +50,7 @@ export default function ProductsScreen() {
         placeholder="Zoek een product..."
       />
       <Text style={styles.resultCount}>{visibleProducts.length} producten gevonden</Text>
-      {visibleProducts.map((product) => <ProductCard key={product.id} product={product} onPress={() => router.push(`/product/${product.id}`)} />)}
+      {visibleProducts.map((product, index) => <ProductCard key={product.id || `product-${index}`} product={product} onPress={() => router.push(`/product/${product.id || index}`)} />)}
       {visibleProducts.length === 0 && <Text style={styles.emptyState}>Geen producten gevonden. Pas je zoekterm of filters aan.</Text>}
     </ScrollView>
   );

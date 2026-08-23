@@ -24,7 +24,7 @@ export default function BlogsScreen() {
   const visibleBlogs = useMemo(() => {
     const filteredBlogs = filterByNameAndCategory(blogs, searchTerm, selectedCategory, 'title');
     return sortBlogs(filteredBlogs, selectedSort);
-  }, [searchTerm, selectedCategory, selectedSort]);
+  }, [blogs, searchTerm, selectedCategory, selectedSort]);
 
   function resetFilters() {
     setSearchTerm('');
@@ -50,7 +50,7 @@ export default function BlogsScreen() {
         placeholder="Zoek een blog..."
       />
       <Text style={styles.resultCount}>{visibleBlogs.length} blogs gevonden</Text>
-      {visibleBlogs.map((blog) => <BlogCard key={blog.id} blog={blog} onPress={() => router.push(`/blog/${blog.id}`)} />)}
+      {visibleBlogs.map((blog, index) => <BlogCard key={blog.id || `blog-${index}`} blog={blog} onPress={() => router.push(`/blog/${blog.id || index}`)} />)}
       {visibleBlogs.length === 0 && <Text style={styles.emptyState}>Geen blogs gevonden. Pas je zoekterm of filters aan.</Text>}
     </ScrollView>
   );
